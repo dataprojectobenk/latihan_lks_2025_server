@@ -12,4 +12,9 @@ class Petugas extends Authenticatable
     use Notifiable,HasApiTokens;
 
     protected $guarded=[];
+
+    // function relasi
+    public function transaksi(){
+        return $this->hasMany(Transaksi::class,'petugas_id','id');
+    }
 }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('petugas_id')->nullable();
-            $table->date('tanggal')->default('getDate()');
+            $table->date('tanggal');
             $table->decimal('totalHarga')->nullable();
             $table->timestamps();
         });
