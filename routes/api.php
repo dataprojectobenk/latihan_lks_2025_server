@@ -12,6 +12,7 @@ Route::get('/user', function (Request $request) {
 
 
 Route::post('login', [PetugasController::class, 'login']);
+Route::post('daftar', [PetugasController::class, 'daftar']);
 
 
 Route::get('logout', [PetugasController::class, 'logout']);
