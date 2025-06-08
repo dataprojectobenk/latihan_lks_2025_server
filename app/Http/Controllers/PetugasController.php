@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Petugas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class PetugasController extends Controller
 {
@@ -37,7 +38,13 @@ class PetugasController extends Controller
         ]);
         // save petugas
         $petugas = new Petugas();
-        $save = $petugas->create($request->only(['namaLengkap','alamat','username','password']));
+        
+        $save = $petugas->create([
+            "namaLengkap"=>$request->namaLengkap,
+            "alamat"=>$request->alamat,
+            "username"=>$request->username,
+            "password"=>Hash::make($request->password),
+        ]);
         if($save){
             return response()->json(['pesan'=>'Data berhasil disimpan!','petugas'=>$save],200);
         }
